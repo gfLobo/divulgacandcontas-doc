@@ -151,7 +151,7 @@ paths:
       - eleicoes-suplementares
       summary: Estados com eleições suplementares
       description: Lista de estados com eleições suplementares naquele ano
-      operationId: eleicoes_suplementares_estados
+      operationId: eleicoesSuplementaresEstados
       parameters:
       - name: ano
         in: path
@@ -168,8 +168,10 @@ paths:
               schema:
                 type: array
                 items:
-                  uf:
-                    type: string
+                  type: object
+                  properties:
+                    uf:
+                      type: string
         404:
           description: não encontrado
           content: {}
@@ -248,7 +250,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Eleição"
+                  $ref: "#/components/schemas/Eleicao"
         404:
           description: não encontrado
           content: {}
@@ -258,7 +260,7 @@ paths:
       - eleicoes-suplementares
       summary: Eleições suplementares
       description: Lista de eleições suplementares no estado naquele ano
-      operationId: eleicoes_suplementares_estados
+      operationId: eleicoesSuplementaresPorUF
       parameters:
       - name: ano
         in: path
@@ -282,7 +284,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Eleição"
+                  $ref: "#/components/schemas/Eleicao"
         404:
           description: não encontrado
           content: {}
@@ -1048,7 +1050,7 @@ components:
         contagem:
           type: integer
           format: int32
-    Eleição:
+    Eleicao:
       type: object
       properties:
         id:
